@@ -3,6 +3,9 @@ version: 2.1
 orbs:
   android: circleci/android@2.3.0
 
+before_script:
+    - touch local.properties
+
 jobs:
   build:
     executor:
@@ -27,6 +30,9 @@ jobs:
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
+      - run: echo "BASE_URL=$BASE_URL" >> ~/repo/local.properties
+      - run: echo "BASE_URL_IMAGE=$BASE_URL_IMAGE" >> ~/repo/local.properties
+      - run: echo "API_KEY=$API_KEY" >> ~/repo/local.properties
       - run:
           name: Run Build
           command: ./gradlew build
