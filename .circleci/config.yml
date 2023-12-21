@@ -4,6 +4,9 @@ orbs:
   android: circleci/android@2.3.0
 
 jobs:
+  before_script:
+    - touch local.properties
+
   build:
     executor:
       name: android/android-machine
