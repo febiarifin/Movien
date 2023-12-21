@@ -13,7 +13,9 @@ jobs:
       resource-class: large
       tag: 2023.07.1
     steps:
-      - checkout
+      - checkout:
+        post:
+          - cp local.properties.ci local.properties
       - run: java --version
       - restore_cache:
           key: android-orb-v1-
